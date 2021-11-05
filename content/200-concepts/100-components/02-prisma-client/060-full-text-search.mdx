@@ -87,7 +87,7 @@ Prisma Migrate currently doesn't support adding search indices, but you can
 easily add one yourself.
 
 ```sql
-CREATE INDEX post_body_index ON posts USING GIN (body);
+CREATE INDEX post_body_index ON posts USING GIN (to_tsvector('english', body));
 ```
 
 You can continue using Prisma Migrate as you were before, it will ignore indexes
